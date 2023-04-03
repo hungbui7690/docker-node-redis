@@ -1,0 +1,12 @@
+version: '3'
+services:
+  redis:
+    image: 'redis:latest'
+  api:
+    build: .
+    volumes:
+      - /app/node_modules
+      - ./:/app
+    environment:
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
